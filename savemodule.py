@@ -2,9 +2,11 @@ import sqlite3
 import MxzyAdds as adds
 from datetime import date, timedelta
 
-db = sqlite3.connect('Graph.db')
-c = db.cursor()
-c.execute("""CREATE TABLE IF NOT EXISTS Task (
+db.close()
+def Create_Task():
+    db = sqlite3.connect('Graph.db')
+    c = db.cursor()
+    c.execute("""CREATE TABLE IF NOT EXISTS Task (
 ID INTEGER PRIMARY KEY AUTOINCREMENT,
 Name text,
 Description text,
@@ -13,9 +15,8 @@ Priority integer,
 Created text,
 DeadLine text
 )
-""")
-db.close()
-def Create_Task():
+    """)
+    db.close()
     print('-------TASK CREATING-------\n')
     try:
         Task_Name = input('Task name:')
